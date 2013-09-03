@@ -17,9 +17,9 @@
 
 ## 如何演示
 
-在台式机上，用 Chrome 等高级浏览器打开 http://your.ip.address/index.html，按下 F11 全屏，并向观众展示它的屏幕
+在台式机上，用 Chrome 等高级浏览器打开 http://your.ip.address/index.html ，按下 F11 全屏，并向观众展示它的屏幕
 
-开启 iPad 的旋转锁（锁成垂直方向），打开 http://your.ip.address/ipad.html，推荐用海豚等能够全屏的浏览器
+开启 iPad 的旋转锁（锁成垂直方向），打开 http://your.ip.address/ipad.html ，推荐用海豚等能够全屏的浏览器
 
 然后就能在 iPad 上看到一个很囧的葫芦，这时候可以随便说两句，比如：“你们猜猜这个福禄里面有什么？”
 
