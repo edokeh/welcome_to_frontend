@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title></title>
+    <style>
+        body {
+            background: black;
+            padding: 100px;
+            overflow: hidden;
+        }
+
+        .ball {
+            height: 200px;
+            width: 200px;
+            position: absolute;
+            background: #4f81bd;
+            color: #fff;
+            text-align: center;
+            line-height: 200px;
+            border-radius: 50%;
+            border: 3px solid white;
+            font-size: 32px;
+            font-weight: bolder;
+            font-family: helvetica, '微软雅黑';
+        }
+    </style>
+</head>
+<body>
+
+<script src="jquery.min.js"></script>
+<script src="jquery.box2d.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="underscore-min.js"></script>
+<script>
+    var subjects = 'HTML CSS Javascript HTTP DOM&BOM 浏览器兼容性 AJAX jQuery 别怕，没了'.split(' ');
+    var colors = '#4f81bd #dd6909 #c0504d #8eb149'.split(' ');
+
+    var dropBall = _.debounce(function () {
+        if (subjects.length === 0) {
+            return;
+        }
+        $('<div class="ball"></div>').appendTo('body')
+                .css({
+                    top : 0,
+                    left : 300 + Math.random() * 10,
+                    background: colors[_.random(0, colors.length - 1)]
+                })
+                .text(subjects.shift())
+                .box2d({
+                    'y-velocity' : 20,
+                    'x-velocity' : _.random(-10, 10) / 10,
+                    'restitution' : 0.7,
+                    'shape' : 'circle'
+                });
+    }, 300);
+
+    // 万一演砸了可以速度按一下空格键救场
+    $(document).keyup(function (e) {
+        if (e.which == 32) {
+            dropBall();
+        }
+    });
+
+    var socket = io.connect('/');
+    socket.on('drop', dropBall);
+</script>
+</body>
+</html>
